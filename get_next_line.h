@@ -8,7 +8,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <string.h>
 
 char *get_next_line(int fd);
 int count_line(char *data);

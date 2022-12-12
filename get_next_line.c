@@ -13,16 +13,21 @@ char *get_next_line(int fd)
     if(file < 0)
         return (NULL);
     data = malloc(BUFFER_SIZE * sizeof(char));
-        bytesRead = read(file,data,BUFFER_SIZE);
-    if(bytesRead < 0)
-        return(NULL);
+    i = 0;
+    while(read(fd, data, BUFFER_SIZE) > 0)
+    {
+        printf("%s",data);
+    }
+    
     return(data);
 }
 
 int main()
 {
-    int file = open("data.txt",O_RDONLY);
+    int file;
+    file = open("data.txt",O_RDONLY);
+    get_next_line(file);
     
-    printf("%s",get_next_line(file));
+    
     close(file);
 }
