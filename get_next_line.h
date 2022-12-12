@@ -1,8 +1,8 @@
-#ifndef GET_NEXT_LINE.H
-# define GET_NEXT_LINE.H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE sizeof(char)
+# define BUFFER_SIZE 4
 #endif
 
 # include <unistd.h>
@@ -11,7 +11,6 @@
 # include <string.h>
 
 char *get_next_line(int fd);
-size_t fdlen(int fd);
-size_t	ft_strlen(const char *s);
+int count_line(char *data);
 
 #endif

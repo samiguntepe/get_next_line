@@ -4,29 +4,25 @@ char *get_next_line(int fd)
 {
     int file;
     char *filename = "data.txt";
-    char *data;
-
+    static char *data;
+    int i;
+    int bytesRead;
     file = open(filename,O_RDONLY);
-
-    if(file < 0)
-    {
+    if(BUFFER_SIZE < 0)
         return (NULL);
-    }
-
-    int bytesRead = read(file,data,strlen(fd));
-
-    data = malloc(sizeof(char) * strlen(data));
-
-    printf(" data uzunluk :%d",strlen(data));
-
-    return(bytesRead);
-
-    close(file);
+    if(file < 0)
+        return (NULL);
+    data = malloc(BUFFER_SIZE * sizeof(char));
+        bytesRead = read(file,data,BUFFER_SIZE);
+    if(bytesRead < 0)
+        return(NULL);
+    return(data);
 }
 
 int main()
 {
     int file = open("data.txt",O_RDONLY);
-    printf("%d",get_next_line(file));
     
+    printf("%s",get_next_line(file));
+    close(file);
 }
